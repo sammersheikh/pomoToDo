@@ -23,8 +23,8 @@ export default class SignUpForm extends Component {
           // We don't want to send the 'error' or 'confirm' property,
           //  so let's make a copy of the state object, then delete them
           const formData = {...this.state}
-          delete formData.confirm
           delete formData.error
+          delete formData.confirm
            // The promise returned by the signUp service method 
           // will resolve to the user object included in the
           // payload of the JSON Web Token (JWT)

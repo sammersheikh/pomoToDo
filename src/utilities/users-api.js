@@ -13,7 +13,7 @@ export function signUp(userData) {
   }
   
   export function checkToken() {
-      return sendRequest(`${BASE_URL}/check-token`)
+    return sendRequest(`${BASE_URL}/check-token`);
   }
 
   /*--- Helper Functions ---*/
