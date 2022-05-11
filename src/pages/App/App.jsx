@@ -12,6 +12,7 @@ export default function App() {
   const [user, setUser] = useState(getUser())
   return (
     <main className='App'>
+      <h1>PomoToDo</h1>
       { user ? 
       <>
         <NavBar user={user} setUser={setUser}/>
