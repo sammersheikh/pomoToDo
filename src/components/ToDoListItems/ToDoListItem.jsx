@@ -1,7 +1,7 @@
-export default function ToDoListItem({todo}) {
+export default function ToDoListItem({todo, idx}) {
     return (
         <>
-        <li>{todo}</li>
+        <li>{idx}{todo}</li>
         </>
     )
 }
