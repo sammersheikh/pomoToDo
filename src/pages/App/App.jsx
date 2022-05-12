@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import ToDoList from '../../components/ToDoList/ToDoList';
+import NewToDoForm from '../../components/NewToDoForm/NewToDoForm';
 import NavBar from '../../components/NavBar/NavBar'
 import AuthPage from '../AuthPage/AuthPage'
 import NewOrderPage from '../NewOrderPage/NewOrderPage'
@@ -25,7 +26,10 @@ export default function App() {
       <>
         <NavBar user={user} setUser={setUser}/>
         <br />
+        <button onClick={() => setShowTodos(!showTodos)}>{showTodos ? 'HIDE' : 'SHOW'}</button>
        {showTodos && <ToDoList todos={todos} /> }
+       <hr />
+       <NewToDoForm />
       </>
       : 
       <AuthPage setUser={setUser}/> 
