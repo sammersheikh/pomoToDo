@@ -1,4 +1,5 @@
-# MERN-Stack Infrastructure
+pomotodo
 
-Clone this repo to provide the starter code for a comprehensive MERN-Stack project including token-based authentication.
+Create items todo and generate quotes to inspire you
+
 
