@@ -19,6 +19,17 @@ export default function App() {
     'Delete todos',
     'Add Pomodoro timer'
   ])
+
+  function addTodo(todo) {
+    setTodos([...todos, todo])
+  }
+
+  const removeTodo = index => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
   return (
     <main className='App'>
       <h1>PomoToDo</h1>
@@ -29,7 +40,7 @@ export default function App() {
         <button onClick={() => setShowTodos(!showTodos)}>{showTodos ? 'HIDE' : 'SHOW'}</button>
        {showTodos && <ToDoList todos={todos} /> }
        <hr />
-       <NewToDoForm />
+       <NewToDoForm addTodo={addTodo} />
       </>
       : 
       <AuthPage setUser={setUser}/> 
