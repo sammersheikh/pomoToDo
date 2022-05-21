@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ToDoList from '../../components/ToDoList/ToDoList';
 import NewToDoForm from '../../components/NewToDoForm/NewToDoForm';
 import NavBar from '../../components/NavBar/NavBar'
@@ -24,11 +24,32 @@ export default function App() {
     setTodos([...todos, todo])
   }
 
-  const removeTodo = index => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-  };
+  const [quote, setQuote] = useState('')
+  const [author, setAuthor] = useState('')
+
+ // http://api.quotable.io/random
+
+ useEffect(() => {
+    fetch('http://api.quotable.io/random')
+    .then(res => res.json())
+    .then(
+      (quote) => {
+          setQuote(quote.content)
+          setAuthor(quote.author)
+      }
+    )
+ },[])
+
+    function generateQuote() {
+      fetch('http://api.quotable.io/random')
+    .then(res => res.json())
+    .then(
+      (quote) => {
+          setQuote(quote.content)
+          setAuthor(quote.author)
+      }
+    )
+    }
 
   return (
     <main className='App'>
@@ -40,6 +61,11 @@ export default function App() {
         <button onClick={() => setShowTodos(!showTodos)}>{showTodos ? 'HIDE' : 'SHOW'}</button>
        {showTodos && <ToDoList todos={todos} /> }
        <hr />
+       <div>
+         <h2>{quote}</h2>
+         <h5>{author}</h5>
+       </div>
+       <button onClick={generateQuote} >Generate New Quote</button>
        <NewToDoForm addTodo={addTodo} />
       </>
       : 
